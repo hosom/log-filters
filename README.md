@@ -34,7 +34,7 @@ To load this filter, add the following line to your config.bro:
 @load filters/whitelist-analyzers-fileslog
 ```
 
-To whitelist an analyzer, redef the set *logged_file_analyzers*.
+To whitelist an analyzer, redef the set **logged_file_analyzers**.
 
 ### whitelist-mimetypes-fileslog.bro
 
@@ -48,4 +48,4 @@ To load this filter, add the following line to your config.bro:
 @load filters/whitelist-mimetypes-fileslog
 ```
 
-To whitelist a mimetype, redef the set *logged_file_mimetypes*.
+To whitelist a mimetype, redef the set **logged_file_mimetypes**.
