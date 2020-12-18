@@ -1,9 +1,9 @@
 module LogFilters;
 
 export {
-    # logged_file_mimetypes is a whitelist of mimetypes to log to files.log
+    # logged_file_mimetypes is a list of mimetypes to log to files.log
     # all other mimetypes will be discarded and not logged.
-    const logged_file_mimetypes = set() &redef;
+    option logged_file_mimetypes = set[string] &redef;
 }
 
 event bro_init() 
@@ -11,7 +11,7 @@ event bro_init()
     # Remove the default files log filter
     Log::remove_default_filter(Files::LOG);
 
-    Log::add_filter(Files::LOG, [$name = "whitelist-mimetypes-fileslog",
+    Log::add_filter(Files::LOG, [$name = "log-mimetypes-fileslog",
 		$pred(rec: Files::Info) = {
             # By default, all files are discarded from the files.log
 		    local result = F;

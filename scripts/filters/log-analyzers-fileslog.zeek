@@ -1,9 +1,9 @@
 module LogFilters;
 
 export {
-    # logged_file_analyzers is a whitelist of file analyzers that when 
+    # logged_file_analyzers is a list of file analyzers that when 
     # attached to a file will cause it to be logged in the files.log
-    const logged_file_analyzers = set() &redef;
+    option logged_file_analyzers = set[string] &redef;
 }
 
 event bro_init() 
@@ -11,7 +11,7 @@ event bro_init()
     # Remove the default files log filter
     Log::remove_default_filter(Files::LOG);
 
-    Log::add_filter(Files::LOG, [$name = "whitelist-analyzers-fileslog",
+    Log::add_filter(Files::LOG, [$name = "log-analyzers-fileslog",
 		$pred(rec: Files::Info) = {
             # By default, all files are discarded from the files.log
             local result = F;
