@@ -6,7 +6,7 @@ export {
     option logged_file_analyzers = set[string] &redef;
 }
 
-event bro_init() 
+event zeek_init() 
     {
     # Remove the default files log filter
     Log::remove_default_filter(Files::LOG);
